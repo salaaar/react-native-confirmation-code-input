@@ -24,6 +24,7 @@ export default class ConfirmationCodeInput extends Component {
     codeInputStyle: TextInput.propTypes.style,
     containerStyle: viewPropTypes.style,
     onFulfill: PropTypes.func,
+    rtl: PropTypes.bool,
     error: PropTypes.bool,
     onChangeText: PropTypes.func,
   };
@@ -41,6 +42,8 @@ export default class ConfirmationCodeInput extends Component {
     errorColor: 'rgba(255,0,0,0.8)',
     space: 8,
     compareWithCode: '',
+    ignoreCase: false,
+    rtl: false,
     ignoreCase: false,
     error: false,
   };
@@ -250,6 +253,7 @@ export default class ConfirmationCodeInput extends Component {
       className,
       size,
       activeColor,
+      rtl,
       errorColor,
       error,
       ...props
@@ -262,7 +266,7 @@ export default class ConfirmationCodeInput extends Component {
 
     let codeInputs = [];
     for (let i = 0; i < codeLength; i++) {
-      const id = i;
+      const id = rtl ? codeLength - i - 1 : i;
       codeInputs.push(
         <TextInput
           key={id}
