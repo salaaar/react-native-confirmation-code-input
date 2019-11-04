@@ -57,6 +57,10 @@ export default class ConfirmationCodeInput extends Component {
     if (_.indexOf(['center', 'left', 'right', 'full-width'], inputPosition) === -1) {
       console.error('Invalid input position. Must be in: center, left, right, full');
     }
+
+    if (this.props.autoFocus) {
+      this.codeInputRefs[0]._setFocus();
+    }
   }
 
   clear() {
